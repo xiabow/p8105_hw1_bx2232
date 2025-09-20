@@ -12,6 +12,7 @@ library(tidyverse)
 ```{r}
 data("early_january_weather")
 weather <- early_january_weather
+summary(early_january_weather)
 ```
 
 ```{r}

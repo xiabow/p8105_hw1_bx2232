@@ -1,4 +1,61 @@
 ---
 title: "p8105_hw1_bx2232"
-output: html_document
+output: github_document
 ---
+
+```{r libraries}
+library(moderndive)
+library(tidyverse)
+```
+
+#Problem 1
+```{r}
+data("early_january_weather")
+weather <- early_january_weather
+```
+
+```{r}
+p1 <- ggplot(weather, aes(x = time_hour, y = temp, color = humid)) +
+  geom_point(alpha = 0.6) +
+  labs(
+    x = "Time (hourly)",
+    y = "Temperature (°F)",
+    color = "Humidity",
+    title = "NYC Early January Weather: Temperature over Time"
+  ) +
+  theme_minimal()
+p1
+
+```
+
+```{r}
+ggsave("p1_scatter_temp_time.png", plot = p1, width = 7, height = 4)
+```
+Temperatures show daily cycles; humidity varies over time. Color gradient helps spot more humid periods.
+
+#Problem 2
+```{r}
+n   <- 10
+num <- rnorm(n)                               
+logi <- num > 0                               
+char <- sample(letters, n)                   
+fct  <- factor(sample(c("low","med","high"), n, TRUE),
+               levels = c("low","med","high"))
+
+df <- tibble(num, logi, char, fct)
+df
+```
+
+```{r}
+mean_num  <- mean(df$num)    
+mean_logi <- mean(df$logi)   # works; TRUE=1, FALSE=0
+
+list(mean_numeric = mean_num,
+     mean_logical = mean_logi)
+```
+
+```{r}
+as_numeric_logi <- as.numeric(df$logi)  
+as_numeric_char <- suppressWarnings(as.numeric(df$char))  
+as_numeric_fct  <- as.numeric(df$fct)  
+```

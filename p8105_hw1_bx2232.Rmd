@@ -33,6 +33,14 @@ ggsave("p1_scatter_temp_time.png", plot = p1, width = 7, height = 4)
 ```
 Temperatures show daily cycles; humidity varies over time. Color gradient helps spot more humid periods.
 
+
+The `early_january_weather` dataset contains `r nrow(weather)` rows and `r ncol(weather)` columns.  
+The variables include: `r paste(names(weather), collapse = ", ")`.  
+The mean temperature across all observations is `r round(mean(weather$temp, na.rm = TRUE), 2)` °F.  
+
+
+
+
 #Problem 2
 ```{r}
 n   <- 10
